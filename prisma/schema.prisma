@@ -8,17 +8,18 @@ datasource db {
 }
 
 model Contacts {
-  id          String    @id @db.VarChar(255)
-  facebook    String?   @db.VarChar(255)
-  linkin      String?   @db.VarChar(255)
-  email       String?   @db.VarChar(255)
-  phonenumber String?   @db.VarChar(255)
-  authorId    String?   @db.VarChar(255)
-  createAt    DateTime? @db.DateTime(0)
-  updateAt    DateTime? @db.DateTime(0)
-  Users       Users?    @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Contacts_ibfk_1")
+  id            String        @id @db.VarChar(255)
+  platFormName  String?       @db.VarChar(255)
+  platFormId    String        @db.VarChar(255)
+  authorId      String?       @db.VarChar(255)
+  platFormLink  String?       @db.VarChar(255)
+  createAt      DateTime?     @db.DateTime(0)
+  updateAt      DateTime?     @db.DateTime(0)
+  Users         Users?        @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Contacts_ibfk_1")
+  PlatFormTypes PlatFormTypes @relation(fields: [platFormId], references: [id], onUpdate: Restrict, map: "fk_contacts_platFormType")
 
   @@index([authorId], map: "authorId")
+  @@index([platFormId], map: "platFormId")
 }
 
 model Contents {
@@ -31,6 +32,7 @@ model Contents {
   authorId   String?   @db.VarChar(255)
   createAt   DateTime? @db.DateTime(0)
   updateAt   DateTime? @db.DateTime(0)
+  isActive   Boolean
   Users      Users?    @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Contents_ibfk_1")
 
   @@index([authorId], map: "authorId")
@@ -38,13 +40,15 @@ model Contents {
 
 model Educations {
   id       String    @id @db.VarChar(255)
-  year     DateTime? @db.DateTime(0)
+  start    String?   @db.VarChar(255)
+  end      String?   @db.VarChar(255)
   name     String?   @db.VarChar(255)
   marjor   String?   @db.VarChar(255)
   link     String?   @db.VarChar(255)
   authorId String?   @db.VarChar(255)
   createAt DateTime? @db.DateTime(0)
   updateAt DateTime? @db.DateTime(0)
+  order    Int       @default(0)
   Users    Users?    @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Educations_ibfk_1")
 
   @@index([authorId], map: "authorId")
@@ -93,6 +97,7 @@ model Skills_back {
   authorId    String?                  @db.VarChar(255)
   createAt    DateTime?                @db.DateTime(0)
   updateAt    DateTime?                @db.DateTime(0)
+  order       Int                      @default(0)
   Users       Users?                   @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Skills_back_ibfk_1")
 
   @@index([authorId], map: "authorId")
@@ -105,6 +110,7 @@ model Skills_front {
   authorId    String?                   @db.VarChar(255)
   createAt    DateTime?                 @db.DateTime(0)
   updateAt    DateTime?                 @db.DateTime(0)
+  order       Int                       @default(0)
   Users       Users?                    @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Skills_front_ibfk_1")
 
   @@index([authorId], map: "authorId")
@@ -117,6 +123,7 @@ model Skills_soft {
   authorId    String?                  @db.VarChar(255)
   createAt    DateTime?                @db.DateTime(0)
   updateAt    DateTime?                @db.DateTime(0)
+  order       Int                      @default(0)
   Users       Users?                   @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Skills_soft_ibfk_1")
 
   @@index([authorId], map: "authorId")
@@ -127,6 +134,8 @@ model Users {
   name         String?        @db.VarChar(255)
   username     String?        @db.VarChar(255)
   password     String?        @db.VarChar(255)
+  email        String?        @db.VarChar(255)
+  phoneNumber  String?        @db.VarChar(255)
   role         Users_role?
   Contacts     Contacts[]
   Contents     Contents[]
@@ -141,16 +150,25 @@ model Users {
 
 model Works {
   id       String    @id @db.VarChar(255)
-  year     DateTime? @db.DateTime(0)
+  start    String?   @db.VarChar(255)
+  end      String?   @db.VarChar(255)
   name     String?   @db.VarChar(255)
   marjor   String?   @db.VarChar(255)
   link     String?   @db.VarChar(255)
   authorId String?   @db.VarChar(255)
   createAt DateTime? @db.DateTime(0)
   updateAt DateTime? @db.DateTime(0)
+  order    Int       @default(0)
   Users    Users?    @relation(fields: [authorId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "Works_ibfk_1")
 
   @@index([authorId], map: "authorId")
+}
+
+model PlatFormTypes {
+  id           String     @id @db.VarChar(255)
+  platFormName String?    @db.VarChar(255)
+  platFormSlug String?    @unique(map: "platFormSlug") @db.VarChar(255)
+  Contacts     Contacts[]
 }
 
 enum Skills_back_discription {
