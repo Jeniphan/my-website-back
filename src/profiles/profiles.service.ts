@@ -34,14 +34,33 @@ export class ProfilesService {
       include: {
         Contents: true,
         Personals: true,
-        Educations: true,
-        Works: true,
-        Skills_front: true,
-        Skills_back: true,
-        Skills_soft: true,
+        Educations: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        Works: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        Skills_front: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        Skills_back: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        Skills_soft: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
         Projects: true,
         Contacts: true
-
       }
     })
     return profile;
