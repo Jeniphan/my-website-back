@@ -15,11 +15,12 @@ const users_service_1 = require("./users/users.service");
 const prisma_service_1 = require("./prisma/prisma.service");
 const profiles_controller_1 = require("./profiles/profiles.controller");
 const profiles_service_1 = require("./profiles/profiles.service");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [config_1.ConfigModule.forRoot(),],
         controllers: [app_controller_1.AppController, users_controller_1.UsersController, profiles_controller_1.ProfilesController],
         providers: [app_service_1.AppService, users_service_1.UsersService, prisma_service_1.PrismaService, profiles_service_1.ProfilesService],
     })
