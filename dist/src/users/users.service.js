@@ -16,6 +16,51 @@ let UsersService = class UsersService {
     constructor(prisma) {
         this.prisma = prisma;
     }
+    async GetUserInfoService(id) {
+        const info = await this.prisma.users.findUnique({
+            where: {
+                id: id,
+            },
+            select: {
+                id: true,
+                name: true,
+                username: true,
+                email: true,
+                phoneNumber: true,
+                role: true,
+                Contacts: true,
+                Contents: true,
+                Educations: {
+                    orderBy: {
+                        order: 'desc',
+                    },
+                },
+                Personals: true,
+                Projects: true,
+                Skills_front: {
+                    orderBy: {
+                        order: 'desc',
+                    },
+                },
+                Skills_back: {
+                    orderBy: {
+                        order: 'desc',
+                    },
+                },
+                Skills_soft: {
+                    orderBy: {
+                        order: 'desc',
+                    },
+                },
+                Works: {
+                    orderBy: {
+                        order: 'desc',
+                    },
+                },
+            },
+        });
+        return info;
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),
