@@ -63,7 +63,7 @@ let ProfilesController = class ProfilesController {
         }
         catch (error) {
             let res = {
-                result: true,
+                result: false,
                 message: "Get Profile Error",
                 data: error
             };

@@ -137,6 +137,7 @@ model Users {
   password     String?        @db.VarChar(255)
   email        String?        @db.VarChar(255)
   phoneNumber  String?        @db.VarChar(255)
+  phoneNumber2  String?        @db.VarChar(255)
   role         Users_role?
   Contacts     Contacts[]
   Contents     Contents[]

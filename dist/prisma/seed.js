@@ -414,13 +414,13 @@ async function main() {
             },
         ],
     });
-    const id_platform1 = (0, uuid_1.v4)();
-    const id_platform2 = (0, uuid_1.v4)();
-    const id_platform3 = (0, uuid_1.v4)();
-    const id_platform4 = (0, uuid_1.v4)();
-    const id_platform5 = (0, uuid_1.v4)();
-    const id_platform6 = (0, uuid_1.v4)();
-    const platformTypes = prisma.platFormTypes.createMany({
+    const id_platform1 = '93bb6f28-6f55-45a0-83a0-28b812b5709f';
+    const id_platform2 = '5ad7921c-c7e8-4923-88e2-2800e5837b4d';
+    const id_platform3 = '29c20911-6720-4143-94a2-f550208156d7';
+    const id_platform4 = '431aa7f9-bc5c-488c-a423-10aeed8dd421';
+    const id_platform5 = '5cd983a3-da7a-409e-b6ce-bdf6d1bcfa7f';
+    const id_platform6 = '1cce2ec2-1671-45e3-8cf1-38063a74e355';
+    const platformTypes = await prisma.platFormTypes.createMany({
         data: [
             {
                 id: id_platform1,
@@ -454,7 +454,7 @@ async function main() {
             },
         ],
     });
-    const Contacts = prisma.contacts.createMany({
+    const Contacts = await prisma.contacts.createMany({
         data: [
             {
                 id: (0, uuid_1.v4)(),
@@ -512,6 +512,7 @@ async function main() {
             },
         ],
     });
+    console.log();
 }
 main()
     .then(async () => {

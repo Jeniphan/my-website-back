@@ -58,7 +58,7 @@ export class ProfilesController {
       }
     } catch (error) {
       let res: ResultMessageModel = {
-        result: true,
+        result: false,
         message: "Get Profile Error",
         data: error
       }
