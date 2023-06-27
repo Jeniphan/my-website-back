@@ -8,7 +8,7 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   async GetUserInfoService(id: string): Promise<any> {
-    const info = await this.prisma.users.findUnique({
+    const info = await this.prisma.users.findFirst({
       where: {
         id: id,
       },
