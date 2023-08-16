@@ -368,6 +368,7 @@ async function main() {
         authorId: Id,
         createAt: new Date(),
         updateAt: new Date(),
+        sort: 5,
       },
       {
         id: uuidv4(),
@@ -378,6 +379,7 @@ async function main() {
         authorId: Id,
         createAt: new Date(),
         updateAt: new Date(),
+        sort: 4,
       },
       {
         id: uuidv4(),
@@ -388,6 +390,7 @@ async function main() {
         authorId: Id,
         createAt: new Date(),
         updateAt: new Date(),
+        sort: 3,
       },
       {
         id: uuidv4(),
@@ -398,6 +401,7 @@ async function main() {
         authorId: Id,
         createAt: new Date(),
         updateAt: new Date(),
+        sort: 2,
       },
       {
         id: uuidv4(),
@@ -408,6 +412,7 @@ async function main() {
         authorId: Id,
         createAt: new Date(),
         updateAt: new Date(),
+        sort: 1,
       },
       {
         id: uuidv4(),
@@ -418,6 +423,7 @@ async function main() {
         authorId: Id,
         createAt: new Date(),
         updateAt: new Date(),
+        sort: 0,
       },
     ],
   });

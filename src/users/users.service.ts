@@ -49,7 +49,11 @@ export class UsersService {
           },
         },
         Personals: true,
-        Projects: true,
+        Projects: {
+          orderBy: {
+            sort: 'desc',
+          },
+        },
         Skills_front: {
           orderBy: {
             order: 'desc',
