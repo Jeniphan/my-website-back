@@ -27,8 +27,8 @@ let ProfilesController = class ProfilesController {
             if (create) {
                 let res = {
                     result: true,
-                    message: "success",
-                    data: create
+                    message: 'success',
+                    data: create,
                 };
                 return res;
             }
@@ -39,21 +39,20 @@ let ProfilesController = class ProfilesController {
         catch (error) {
             let res = {
                 result: false,
-                message: "Create Profile Error",
-                data: error
+                message: 'Create Profile Error',
+                data: error,
             };
             return res;
         }
     }
     async GetProfile(data) {
         try {
-            console.log("GetProfile>>>>>", data.id);
             const result = await this.profileService.getProfile(data.id);
             if (result) {
                 let res = {
                     result: true,
-                    message: "success",
-                    data: result
+                    message: 'success',
+                    data: result,
                 };
                 return res;
             }
@@ -64,8 +63,8 @@ let ProfilesController = class ProfilesController {
         catch (error) {
             let res = {
                 result: false,
-                message: "Get Profile Error",
-                data: error
+                message: 'Get Profile Error',
+                data: error,
             };
             return res;
         }

@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "my-website-bo",
+      "script": "dist/src/main.js",
+      "exec_mode": "cluster",
+      "instances": 1,
+      "autorestart": true,
+      "watch": false,
+      "max_memory_restart": "2G",
+      "env": {
+        "NODE_ENV": "uat"
+      }
+    }
+  ]
+}
