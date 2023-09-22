@@ -35,6 +35,10 @@ jobs:
         script: |
           cd my-website-back/
           git pull origin main
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           npm install
           npx prisma generate
           npm build
+          nvm use 20
+          pm2 restart my-website-bo
