@@ -35,6 +35,7 @@ jobs:
         script: |
           cd my-website-back/
           git pull origin main
-          npm install --production
+          npm install
           npx prisma generate
+          npm build
           pm2 restart my-website-bo
